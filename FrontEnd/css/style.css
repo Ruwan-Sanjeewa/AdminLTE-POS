@@ -1,0 +1,28 @@
+.card-footer{
+    background-color: #f4f6f9;
+}
+
+/* .form-control{
+    width: 50%;
+} */
+
+#newCustomer{
+    font-weight: bold;
+   
+}
+
+#save{
+    font-weight: bold;
+}
+
+.column1{
+    display: inline-block;
+    width: 45%;
+    height: 100px;
+    margin-right: 70px;
+}
+.column2{
+    display: inline-block;
+    width:45%;
+    height: 100px;
+}

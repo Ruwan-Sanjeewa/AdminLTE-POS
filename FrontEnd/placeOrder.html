@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/in-mem-db.js">
+
+    <title>POS</title>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+
+
+            </ul>
+
+
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li></li>
+            </ul>
+        </nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 col-md-4 col-0" style="min-height: 618px;">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-link">
+                <span class="brand-text font-weight-light">Point Of Sale</span>
+            </a>
+
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>DashBoard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="customer.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Customer</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="item.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Item</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="placeOrder.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Place Order</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="viewOrders.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>View Orders</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper ">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark" style="font-weight: bold;">Place Order</h1>
+                        </div><!-- /.col -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+                <hr>
+            </div>
+
+            <!-- /.content-header -->
+            <form role="form">
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success" id="newOrder"> <i class="fas fa-plus"></i> NEW
+                        Order</button>
+                </div>
+
+
+                <div class="card-body">
+                    <div class="column1" style="height:50px;">
+                        <div class="form-group">
+                            <label>Order ID:</label> <label id="lblOrderId"></label>
+                        </div>
+                    </div>
+
+                    <div class="column2" style="height:50px;">
+                        <div class="form-group">
+                            <label>Order Date:</label> <label id="lblOrderDate"></label>
+
+                        </div>
+                    </div>
+                    <div class="column1" style="height:120px;">
+                        <div class="form-group">
+
+                            <label for="cmbCustomerID">Customer ID:</label>
+                            <select id="cmbCustomerID" class="form-control">
+                                <option selected disabled hidden>-Select Customer ID-</option>
+
+                            </select>
+
+                            <label>Customer Name:</label> <label id="lblCustomerName"></label>
+                        </div>
+                    </div>
+                    <div class="column2" style="height:120px;">
+                        <div class="form-group">
+                            <label for="cmbItemId">Item Code:</label>
+                            <select id="cmbItemId" class="form-control">
+                                <option selected disabled hidden> -Select Item ID-</option>
+
+                            </select>
+
+                            <label>Item Name:</label> <label id="lblItemName"></label>
+                        </div>
+                    </div>
+                    <div class="column1" style="height:50px;">
+                        <div class="form-group">
+                            <label for="unitPrice">Unit Price:</label> <label id="lblUnitPrice"></label>
+                        </div>
+                    </div>
+                    <div class="column2" style="height:50px;">
+                        <div class="form-group">
+                            <label for="quantityOnHand">Quantity On Hand:</label> <label id="lblQuantityOnHand"></label>
+                        </div>
+                    </div>
+
+                    <div class="column1">
+                        <div class="form-group">
+                            <label for="txtQty">Quantity:</label>
+                            <input class="form-control" type="number" id="txtQty">
+
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button id="btnAddCart" class="btn btn-warning"> <i class="fas fa-cart-plus"></i> Add to Cart</button>
+
+                    <br><br><br>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Item Name</th>
+                                <th>Unit Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+
+
+                            </tr>
+
+
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <button id="btnPlaceOrder" class="btn btn-primary" style="position:relative;left: 1050px;"> <i
+                            class="fas fa-cart-arrow-down"></i>
+                        Place Order</button>
+
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+    <script src="js/date-formatter.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/adminlte.min.js"></script>
+    <script src="js/in-mem-db.js"></script>
+    <script src="js/date-formatter.js"></script>
+
+    <script>
+        var today = new Date();
+        var formattedDate = today.format("yyyy-mm-dd");
+        $("#lblOrderDate").text(formattedDate);
+
+
+    </script>
+
+
+    <script>
+
+
+
+        $("#cmbCustomerID").attr("disabled", '');
+        $("#cmbItemId").attr("disabled", '');
+        $("#txtQty").attr("disabled", '');
+
+        $("#newOrder").click(function () {
+            $("#cmbCustomerID").removeAttr("disabled");
+            $("#cmbItemId").removeAttr("disabled");
+            $("#txtQty").removeAttr("disabled");
+
+            var ordersCount = $("table tbody tr").length;
+            $("#lblOrderId").text(ordersCount);
+
+
+
+        });
+
+        $("#cmbCustomerID").prepend("<option selected disabled hidden>-Select Customer ID-</option>");
+        for (i = 0; i < CUSTOMERS.length; i++) {
+            $("#cmbCustomerID").append("<option>" + CUSTOMERS[i].id + "</option>");
+        }
+
+        $("#cmbItemID").prepend("<option selected disabled hidden> -Select Item ID-</option>");
+        for (i = 0; i < ITEMS.length; i++) {
+            $("#cmbItemId").append("<option>" + ITEMS[i].code + "</option>");
+        }
+
+        $("#cmbCustomerID").click(function () {
+
+            for (i = 0; i < CUSTOMERS.length; i++) {
+                var selectedCustomerId = $("#cmbCustomerID").find(":selected").text();
+
+                if (selectedCustomerId == CUSTOMERS[i].id) {
+                    $("#lblCustomerName").text(CUSTOMERS[i].name);
+
+
+                }
+
+            }
+        });
+
+        var qty_onHand = 0;
+        var typedQty = 0;
+        var selectedIndex = 0;
+        $("#cmbItemId").click(function () {
+
+
+
+
+            for (i = 0; i < ITEMS.length; i++) {
+                var selectedItemId = $("#cmbItemId").find(":selected").text();
+
+
+
+                if (selectedItemId == ITEMS[i].code) {
+                    $("#lblItemName").text(ITEMS[i].description);
+                    $("#lblUnitPrice").text(ITEMS[i].unitPrice);
+                    $("#lblQuantityOnHand").text(ITEMS[i].qtyOnHand);
+                }
+
+            }
+
+            qty_onHand = parseInt($("#lblQuantityOnHand").text());
+            $("#txtQty").attr("max", qty_onHand);
+            $("#txtQty").attr("min", '0');
+
+            $("#txtQty").keyup(function () {
+                typedQty = $("#txtQty").val();
+                if (typedQty > qty_onHand) {
+                    $("#txtQty").css("border", '1px solid red');
+                    return;
+                }
+                else if (typedQty == "" || typedQty < qty_onHand) {
+                    $("#txtQty").css("border", 'none');
+
+                }
+
+            });
+
+
+        });
+
+
+       
+
+
+            $("#btnAddCart").click(function () {
+
+                if ($("#lblCustomerName").text() == "") {
+                    alert("Please select a Customer");
+                    return;
+                }
+
+                if ($("#lblItemName").text() == "" || $("#lblUnitPrice").text() == "" || $("#lblQuantityOnHand").text() == "") {
+                    alert("Please select a Item");
+                    return;
+                }
+
+                if ($("#txtQty").val() == "") {
+                    alert("Please Enter a quantity");
+                    return;
+                }
+
+
+                if (typedQty > qty_onHand) {
+                    alert("Please Enter a valid quantity");
+                    $("#txtQty").focus();
+                    $("#txtQty").select();
+                    return;
+                }
+
+
+
+
+
+
+
+
+                var total = parseInt($("#lblUnitPrice").text()) * $("#txtQty").val();
+                $("table tbody").append("<tr><td class='text-center' id='itemId'>" + $("#cmbItemID").find(":selected").text() + "</td><td class='text-center' id='description'>" + $("#lblItemName").text() + "</td><td class='text-center' id='unitPrice'>" + $("#lblUnitPrice").text() + "</td><td class='text-center' id='qty'>" + $("#txtQty").val() + "</td><td class='text-center' id='total'>" + total + "</td><td><img src='images/recyclebin.png' width='48px' alt='delete'></td>");
+                calculateTotal();
+                $("img").mouseover(function () {
+                    $(this).attr("src", 'images/recyclebin-hover.png');
+                });
+
+                $("img").mouseout(function () {
+                    $(this).attr("src", 'images/recyclebin.png');
+                });
+
+                $("img").off("click");
+                $("img").click(function (eventData) {
+
+                    var deletedItemQty = parseInt($(this).parent().parent().find("#qty").text());
+                    var deletedItemId = $(this).parent().parent().find("#itemId").text();
+                    for (i = 0; i < ITEMS.length; i++) {
+                        if (deletedItemId == ITEMS[i].code) {
+
+                            ITEMS[i].qtyOnHand = ITEMS[i].qtyOnHand + deletedItemQty;
+                            $("#lblQtyOnHand").text(ITEMS[i].qtyOnHand);
+                        }
+                    }
+
+
+
+
+
+                    $(this).parent().parent().fadeOut(500);
+
+                    setTimeout(function () {
+
+                        $(this).parent().parent().remove();
+                        $("#lblTotal").text(calculateTotal());
+
+                    }, 600);
+
+
+                    eventData.stopPropagation();
+                    $("#cmbItemID").val("-Select Item ID-");
+                    $("#lblItemDescription").text("");
+                    $("#lblUnitPrice").text("");
+                    $("#lblQtyOnHand").text("");
+                    $("#txtQty").val("");
+
+                });
+
+                for (var i = 0; i < ITEMS.length; i++) {
+                    var selectedItemId = $("#cmbItemID").find(":selected").text();
+
+                    if (selectedItemId == ITEMS[i].code) {
+                        ITEMS[i].qtyOnHand = parseInt($("#lblQtyOnHand").text()) - $("#txtQty").val();
+                        $("#lblQtyOnHand").text(ITEMS[i].qtyOnHand);
+                    }
+                }
+
+
+                $("#tblContainer").css("overflow-y", 'scroll');
+
+                $("#tblOrderDetails tbody tr").click(function () {
+                    $("#cmbItemID").attr("disabled", '');
+                    $("#btnAddCart").html("<i class='fas fa-cart-plus'></i> Update Cart");
+
+                    $("#cmbItemID").val($(this).find("#itemId").text());
+                    $("#lblItemDescription").text($(this).find("#description").text());
+                    $("#lblUnitPrice").text($(this).find("#unitPrice").text());
+
+                    $("#txtQty").val($(this).find("#qty").text());
+
+                    for (var i = 0; i < ITEMS.length; i++) {
+                        if (ITEMS[i].code == $(this).find("#itemId").text()) {
+                            $("#lblQtyOnHand").text(ITEMS[i].qtyOnHand);
+                        }
+                    }
+
+
+
+
+
+                });
+
+
+            });
+            function calculateTotal() {
+            var rows = $("#tblOrderDetails tbody tr");
+            var total = 0;
+            for (var i = 0; i < rows.length; i++) {
+                total += parseFloat($(rows[i]).find("td:nth-child(5)").text());
+            }
+            $("#lblTotal").text(total);
+            return total;
+        }
+
+    </script>
+
+</body>
+
+</html>

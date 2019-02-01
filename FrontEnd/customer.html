@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <title>POS</title>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+
+
+            </ul>
+
+
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li></li>
+            </ul>
+        </nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 col-md-4 col-0" style="min-height: 618px;">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-link">
+                <span class="brand-text font-weight-light">Point Of Sale</span>
+            </a>
+
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>DashBoard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="customer.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Customer</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="item.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Item</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="placeOrder.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Place Order</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="viewOrders.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>View Orders</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper ">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark" style="font-weight: bold;">Customers</h1>
+                        </div><!-- /.col -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+                <hr>
+            </div>
+
+            <!-- /.content-header -->
+            <form role="form">
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success" id="newCustomer"> <i class="fas fa-plus"></i> NEW
+                        Customer</button>
+                </div>
+
+
+                <div class="card-body">
+                    <div class="column1">
+                        <div class="form-group">
+                            <label for="customerId">Customer ID:</label>
+                            <input type="text" class="form-control" id="customerId" placeholder="Customer ID">
+                        </div>
+                    </div>
+                    <div class="column2">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name:</label>
+                            <input type="text" class="form-control" id="customerName" placeholder="Customer Name">
+                        </div>
+                    </div>
+                    <div class="column1">
+                        <div class="form-group">
+                            <label for="customerAddress">Customer Address:</label>
+                            <input type="text" class="form-control" id="customerAddress" placeholder="Customer Address">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary" id="save">Save</button>
+
+                    <br><br><br>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Customer Name</th>
+                                <th>Customer Address</th>
+                                <th></th>
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/adminlte.min.js"></script>
+
+    <script>
+        $("#customerId").attr("disabled", '');
+        $("#customerName").attr("disabled", '');
+        $("#customerAddress").attr("disabled", '');
+
+        $("#newCustomer").click(function () {
+            $("#customerId").removeAttr("disabled");
+            $("#customerName").removeAttr("disabled");
+            $("#customerAddress").removeAttr("disabled");
+
+
+
+
+        });
+
+        $("#save").click(function () {
+            if ($("#customerId").val() == "") {
+                alert("Customer ID cannot be empty");
+                return;
+            }
+
+            if ($("#customerName").val() == "") {
+                alert("Customer name cannot be empty");
+                return;
+            }
+            if ($("#customerAddress").val() == "") {
+                alert("Customer address cannot be empty");
+                return;
+            }
+
+            if ($("#btnAddCart").text().trim() == "Update") {
+                    
+                    $(currentRow).find("#cusName").text($("#customerName").val());
+                    $(currentRow).find("#cusAddress").text($("#cusAddress").val());
+
+                    $("#save").html('Save');
+                    return;
+                }
+
+
+            $("table tbody").append("<tr><td id='cusId'>" + $("#customerId").val() + "</td><td id='cusName'>" + $("#customerName").val() + "</td><td id='cusAddress'>" + $("#customerAddress").val() + "</td> <td><img src='image/recyclebin.png' width='48px' alt='delete'></td></tr>");
+            $("#customerId").val("");
+            $("#customerName").val("");
+            $("#customerAddress").val("");
+
+            $("img").mouseover(function () {
+                $(this).attr("src", 'image/recyclebin-hover.png');
+            });
+
+            $("img").mouseout(function () {
+                $(this).attr("src", 'image/recyclebin.png');
+            });
+
+
+            $("img").off("click");
+            $("img").click(function (eventData) {
+
+                $(this).parent().parent().fadeOut(500);
+
+                setTimeout(function () {
+
+                    $(this).parent().parent().remove();
+
+
+                }, 600);
+
+
+                eventData.stopPropagation();
+
+                $("#customerId").val("");
+                $("#customerName").val("");
+                $("#customerAddress").val("");
+            });
+
+
+            $("table tbody tr").click(function () {
+                $("#customerId").attr("disabled", '');
+                $("#save").text("Update");
+
+                $("#customerId").val($(this).find("#cusId").text());
+                $("#customerName").val($(this).find("#cusName").text());
+                $("#customerAddress").val($(this).find("#cusAddress").text());
+
+                
+
+            });
+
+
+
+        });
+
+    </script>
+
+</body>
+
+</html>
