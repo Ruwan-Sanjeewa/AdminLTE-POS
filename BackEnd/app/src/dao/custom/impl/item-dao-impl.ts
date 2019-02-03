@@ -60,7 +60,7 @@ export class ItemDAOImpl implements ItemDAO{
     save(entity: Item): Promise<boolean> {
         return new Promise((resolve, reject) => {
 
-            this.connection.query(`INSERT INTO item VALUES ('${entity.code}','${entity.description}','${entity.unitPrice}','${entity.qtyOnHand}')`,
+            this.connection.query(`INSERT INTO item VALUES ('${entity.code}','${entity.name}','${entity.unitPrice}','${entity.qtyOnHand}')`,
                 (err, results) => {
 
                     if (err) {
@@ -77,7 +77,7 @@ export class ItemDAOImpl implements ItemDAO{
         return new Promise((resolve, reject) => {
 
 
-            this.connection.query(`UPDATE item SET description = '${entity.description}', unitPirce ='${entity.unitPrice}', qtyOnHand ='${entity.qtyOnHand}' WHERE code='${entity.code}'`,
+            this.connection.query(`UPDATE item SET name = '${entity.name}', unitPrice ='${entity.unitPrice}', qtyOnHand ='${entity.qtyOnHand}' WHERE code='${entity.code}'`,
                 (err, results) => {
 
                     if (err) {

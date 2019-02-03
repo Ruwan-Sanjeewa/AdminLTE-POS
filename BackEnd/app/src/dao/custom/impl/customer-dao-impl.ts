@@ -84,7 +84,7 @@ export class CustomerDAOImpl implements CustomerDAO {
     update(entity: Customer): Promise<boolean> {
         return new Promise((resolve, reject) => {
 
-            console.log(`UPDATE customer SET name = '${entity.name}', address ='${entity.address}' WHERE id='${entity.id}'`);
+
             this.connection.query(`UPDATE customer SET name = '${entity.name}', address ='${entity.address}' WHERE id='${entity.id}'`,
                 (err, results) => {
 

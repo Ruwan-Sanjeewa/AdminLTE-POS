@@ -31,7 +31,8 @@ customerDispatcher.route("")
     var promise = new customer_bo_1.CustomerBO().saveCustomer(req.body);
     promise.then(function (status) { return res.status(201).json(status); })
         .catch(function (err) { return res.status(500).send(err); });
-}).head(cors({
+})
+    .head(cors({
     exposedHeaders: ['X-count']
 }), function (req, res) {
     var promise = new customer_bo_1.CustomerBO().countCustomers();

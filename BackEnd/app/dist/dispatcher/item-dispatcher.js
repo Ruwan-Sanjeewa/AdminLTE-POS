@@ -14,7 +14,7 @@ itemDispatcher.route("")
     });
 })
     .post(function (req, res) {
-    if (!("code" in req.body && "description" in req.body && "unitPrice" in req.body && "qtyOnHand" in req.body)) {
+    if (!("code" in req.body && "name" in req.body && "unitPrice" in req.body && "qtyOnHand" in req.body)) {
         res.status(400).send("Invalid Request Body");
         return;
     }
@@ -60,7 +60,7 @@ itemDispatcher.route("/:code")
     });
 })
     .put(function (req, res) {
-    if (!("code" in req.body && "description" in req.body && "unitPrice" in req.body && "qtyOnHand" in req.body)) {
+    if (!("code" in req.body && "name" in req.body && "unitPrice" in req.body && "qtyOnHand" in req.body)) {
         res.status(400).send("Invalid Request Body");
         return;
     }

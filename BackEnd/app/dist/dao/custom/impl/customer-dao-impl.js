@@ -60,7 +60,6 @@ var CustomerDAOImpl = /** @class */ (function () {
     CustomerDAOImpl.prototype.update = function (entity) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            console.log("UPDATE customer SET name = '" + entity.name + "', address ='" + entity.address + "' WHERE id='" + entity.id + "'");
             _this.connection.query("UPDATE customer SET name = '" + entity.name + "', address ='" + entity.address + "' WHERE id='" + entity.id + "'", function (err, results) {
                 if (err) {
                     reject(err);

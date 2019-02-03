@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Item = /** @class */ (function () {
-    function Item(code, description, unitPrice, qtyOnHand) {
+    function Item(code, name, unitPrice, qtyOnHand) {
         this.code = code;
-        this.description = description;
+        this.name = name;
         this.unitPrice = unitPrice;
         this.qtyOnHand = qtyOnHand;
     }
