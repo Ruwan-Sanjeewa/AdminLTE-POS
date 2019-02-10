@@ -55,7 +55,7 @@
 
 #btnPlaceOrder{
     position: relative;
-    left:460px;
+    right:0px;
 }
 
 #col2{
@@ -70,4 +70,10 @@
 .orderDetails-footer{
     position: relative;
     top: 5px;
+}
+
+
+#tblOrderDetails tbody td{
+    height: 75px;
+    vertical-align: middle;
 }

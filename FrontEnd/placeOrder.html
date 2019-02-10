@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/in-mem-db.js">
 
     <title>POS</title>
 </head>
@@ -116,15 +115,15 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-8">
-                    <h1 class="m-0 text-dark">Place Order
-                        <small style="font-size: 15px;color: #777;"> Select items,quantities and Place Orders </small>
+                    <h1 class="m-0 text-dark">Place OrderDto
+                        <small style="font-size: 15px;color: #777;"> Select Items,Quantities and Place Orders</small>
                     </h1>
 
                 </div><!-- /.col -->
                 <div class="col-sm-4">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Place Order</li>
+                        <li class="breadcrumb-item active">Place OrderDto</li>
                     </ol>
                 </div>
 
@@ -137,19 +136,15 @@
     <div class="row orders">
         <div id="col1" class="col-md-4">
             <div id="order-details" class="alert alert-warning">
-                <div>Order ID: <label id="lblOrderId"></label></div>
-                <div>Order Date: <label id="lblOrderDate">2019-02-03</label></div>
+                <div>OrderDto ID: <label id="lblOrderId"></label></div>
+                <div>OrderDto Date: <label id="lblOrderDate"></label></div>
             </div>
             <div class="alert alert-primary">
                 <div class="form-group">
                     Customer ID:
-                    <select id="cmbCustomerID" class="form-control" disabled="disabled">
+                    <select id="cmbCustomerID" class="form-control">
                         <option selected="" disabled="" hidden="">-Select Customer ID-</option>
-                        <option>C001</option>
-                        <option>C002</option>
-                        <option>C003</option>
-                        <option>C004</option>
-                        <option>C005</option>
+
                     </select>
                 </div>
                 <div>Customer Name: <label id="lblCustomerName"></label></div>
@@ -157,44 +152,39 @@
             <div id="item-container" class="alert alert-dark">
                 <div class="form-group">
                     Item Code:
-                    <select id="cmbItemID" class="form-control" disabled="disabled">
+                    <select id="cmbItemID" class="form-control">
                         <option selected="" disabled="" hidden=""> -Select Item ID-</option>
-                        <option>I001</option>
-                        <option>I002</option>
-                        <option>I003</option>
-                        <option>I004</option>
-                        <option>I005</option>
-                        <option>I006</option>
-                        <option>I007</option>
-                        <option>I008</option>
-                        <option>I009</option>
-                        <option>I010</option>
+
                     </select>
                 </div>
                 <div id="item-details">
-                    <div>Item Description: <label id="lblItemDescription"></label></div>
+                    <div>Item Name: <label id="lblItemName"></label></div>
                     <div>Unit Price: <label id="lblUnitPrice"></label></div>
                     <div>Qty. On Hand: <label id="lblQtyOnHand"></label></div>
                 </div>
                 <div class="form-group">
                     Qty.
-                    <input class="form-control" type="number" id="txtQty" disabled="disabled">
+                    <input class="form-control" type="number" id="txtQty" min="0">
                 </div>
                 <div>
-                    <button id="btnAddCart" class="btn btn-warning"><i class="fas fa-cart-plus"></i> Add to Cart
+                    <button id="btnAddCart" class="btn btn-warning" style="font-weight: bold;"><i
+                            class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button type="reset" class="btn btn-danger" style="width:75px;font-weight: bold;font-weight: bold;">
+                        clear
                     </button>
                 </div>
             </div>
 
         </div>
-        <div id="col2" class="col-md-8" >
+        <div id="col2" class="col-md-8">
             <div class="alert alert-success" style="height: 535px;">
                 <div id="tblContainer" class="table-dark" style="height: 465px;">
-                    <table id="tblOrderDetails" class="table table-hover table-dark" >
+                    <table id="tblOrderDetails" class="table table-hover table-dark">
                         <thead>
                         <tr>
                             <th class="text-center">Item Code</th>
-                            <th class="text-center">Description</th>
+                            <th class="text-center">Name</th>
                             <th class="text-center">Unit Price</th>
                             <th class="text-center">Qty</th>
                             <th class="text-center">Total</th>
@@ -207,38 +197,39 @@
                     </table>
                 </div>
                 <div>
-                    <span id="spnTotal" class="orderDetails-footer" style="font-size: 25px;">Total: <label id="lblTotal">0.0</label></span>
-                    <button id="btnPlaceOrder" class="btn btn-primary orderDetails-footer" style="left: 530px;"><i class="fas fa-cart-arrow-down"></i>
-                        Place Order
+                    <span id="spnTotal" class="orderDetails-footer" style="font-size: 25px;">Total: <label
+                            id="lblTotal">0.0</label></span>
+                    <button id="btnPlaceOrder" class="btn btn-primary orderDetails-footer"
+                            style="float: right;font-weight: bold;"><i
+                            class="fas fa-cart-arrow-down"></i>
+                        Place OrderDto
                     </button>
                 </div>
+
             </div>
         </div>
     </div>
 
     <div class="row orders">
         <div class="col-12">
-            <h3 class="text-center">Order Details</h3>
+            <h3 class="text-center">OrderDto Details</h3>
         </div>
         <table id="tblOrders" class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th class="text-center">Order ID</th>
-                <th class="text-center">Order Date</th>
+                <th class="text-center">OrderDto ID</th>
+                <th class="text-center">OrderDto Date</th>
                 <th class="text-center">Customer ID</th>
                 <th class="text-center">Customer Name</th>
-                <th class="text-center">Order Total</th>
+                <th class="text-center">OrderDto Total</th>
             </tr>
             </thead>
             <tbody>
 
 
-
             </tbody>
         </table>
     </div>
-
-
 
 
 </div>
@@ -247,202 +238,263 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/adminlte.min.js"></script>
-<script src="js/in-mem-db.js"></script>
-<script src="js/date-formatter.js"></script>
-
-<script>
-    var today = new Date();
-    var formattedDate = today.format("yyyy-mm-dd");
-    $("#lblOrderDate").text(formattedDate);
-
-
-</script>
 
 
 <script>
+    var qty_onHand = 0;
+    var tempDB = 0;
 
+    $(document).ready(function () {
 
-    $("#cmbCustomerID").attr("disabled", '');
-    $("#cmbItemId").attr("disabled", '');
-    $("#txtQty").attr("disabled", '');
+        var today = new Date();
+        var formattedDate = today.format("yyyy-mm-dd");
+        $("#lblOrderDate").text(formattedDate);
 
-    $("#newOrder").click(function () {
-        $("#cmbCustomerID").removeAttr("disabled");
-        $("#cmbItemId").removeAttr("disabled");
-        $("#txtQty").removeAttr("disabled");
-
-        var ordersCount = $("table tbody tr").length;
+        var ordersCount = $("#tblOrders tbody tr").length + 1;
         $("#lblOrderId").text(ordersCount);
 
 
-    });
+        var ajaxConfig = {
+            method: "GET",
+            url: "http://localhost:3000/api/v1/customers",
+            async: true
 
-    $("#cmbCustomerID").prepend("<option selected disabled hidden>-Select Customer ID-</option>");
-    for (i = 0; i < CUSTOMERS.length; i++) {
-        $("#cmbCustomerID").append("<option>" + CUSTOMERS[i].id + "</option>");
-    }
+        };
 
-    $("#cmbItemID").prepend("<option selected disabled hidden> -Select Item ID-</option>");
-    for (i = 0; i < ITEMS.length; i++) {
-        $("#cmbItemId").append("<option>" + ITEMS[i].code + "</option>");
-    }
+        $.ajax(ajaxConfig).done(function (response, statusText, jxhr) {
 
-    $("#cmbCustomerID").click(function () {
-
-        for (i = 0; i < CUSTOMERS.length; i++) {
-            var selectedCustomerId = $("#cmbCustomerID").find(":selected").text();
-
-            if (selectedCustomerId == CUSTOMERS[i].id) {
-                $("#lblCustomerName").text(CUSTOMERS[i].name);
-
-
+            for (i = 0; i < response.length; i++) {
+                $("#cmbCustomerID").append("<option>" + response[i].id + "</option>");
             }
 
-        }
-    });
-
-    var qty_onHand = 0;
-    var typedQty = 0;
-    var selectedIndex = 0;
-    $("#cmbItemId").click(function () {
-
-
-        for (i = 0; i < ITEMS.length; i++) {
-            var selectedItemId = $("#cmbItemId").find(":selected").text();
-
-
-            if (selectedItemId == ITEMS[i].code) {
-                $("#lblItemName").text(ITEMS[i].description);
-                $("#lblUnitPrice").text(ITEMS[i].unitPrice);
-                $("#lblQuantityOnHand").text(ITEMS[i].qtyOnHand);
-            }
-
-        }
-
-        qty_onHand = parseInt($("#lblQuantityOnHand").text());
-        $("#txtQty").attr("max", qty_onHand);
-        $("#txtQty").attr("min", '0');
-
-        $("#txtQty").keyup(function () {
-            typedQty = $("#txtQty").val();
-            if (typedQty > qty_onHand) {
-                $("#txtQty").css("border", '1px solid red');
-                return;
-            }
-            else if (typedQty == "" || typedQty < qty_onHand) {
-                $("#txtQty").css("border", 'none');
-
-            }
-
+        }).fail(function (jxhr, statusText, error) {
+            console.log(error);
         });
 
+
+        var ajaxConfig = {
+            method: "GET",
+            url: "http://localhost:3000/api/v1/items",
+            async: true
+
+        };
+
+        $.ajax(ajaxConfig).done(function (response, statusText, jxhr) {
+            tempDB = response;
+
+            for (var i = 0; i < tempDB.length; i++) {
+
+                $("#cmbItemID").append("<option>" + tempDB[i].code + "</option>");
+            }
+
+
+        }).fail(function (jxhr, statusText, error) {
+            console.log(error);
+        });
+
+
+    });
+
+
+    $("#cmbCustomerID").change(function () {
+
+
+        var ajaxConfig = {
+            method: "GET",
+            url: "http://localhost:3000/api/v1/customers/" + $(this).val(),
+            async: true
+
+        };
+
+        $.ajax(ajaxConfig).done(function (response, statusText, jxhr) {
+
+            $("#lblCustomerName").text(response.name);
+
+        }).fail(function (jxhr, statusText, error) {
+            console.log(error);
+        })
+
+
+    });
+
+
+    $("#cmbItemID").change(function () {
+
+        for (var i = 0; i < tempDB.length; i++) {
+            if (tempDB[i].code == $(this).val()) {
+                $("#lblItemName").text(tempDB[i].name);
+                $("#lblUnitPrice").text(tempDB[i].unitPrice + ".00");
+                $("#lblQtyOnHand").text(tempDB[i].qtyOnHand);
+
+                qty_onHand = parseInt(tempDB[i].qtyOnHand);
+            }
+        }
 
     });
 
 
     $("#btnAddCart").click(function () {
 
-        if ($("#lblCustomerName").text() == "") {
-            alert("Please select a Customer");
-            return;
-        }
+            if ($("#lblCustomerName").text() == "") {
+                alert("Please select a Customer");
+                return;
+            }
 
-        if ($("#lblItemName").text() == "" || $("#lblUnitPrice").text() == "" || $("#lblQuantityOnHand").text() == "") {
-            alert("Please select a Item");
-            return;
-        }
+            if ($("#lblItemName").text() == "" || $("#lblUnitPrice").text() == "" || $("#lblQtyOnHand").text() == "") {
+                alert("Please select a Item");
+                return;
+            }
 
-        if ($("#txtQty").val() == "") {
-            alert("Please Enter a quantity");
-            return;
-        }
+            if ($("#txtQty").val() == "") {
+                alert("Please Enter a quantity");
+                return;
+            }
+
+            var typedQty = $("#txtQty").val();
+            if (typedQty > qty_onHand) {
+                alert("Please Enter a valid quantity");
+                $("#txtQty").focus();
+                $("#txtQty").select();
+                return;
+            }
+
+            if (typedQty < 0) {
+                alert("Please Enter a valid quantity");
+                $("#txtQty").focus();
+                $("#txtQty").select();
+                return;
+            }
 
 
-        if (typedQty > qty_onHand) {
-            alert("Please Enter a valid quantity");
-            $("#txtQty").focus();
-            $("#txtQty").select();
-            return;
-        }
+            if ($("#cmbItemID").attr("disabled")) {
+
+                var rows=$("#tblOrderDetails tbody tr");
+
+                for(var i=0;i<rows.length;i++){
+                    if($(rows[i]).find("td:first-child").text()== $("#cmbItemID").val()){
+                        $(rows[i]).find("td:nth-child(4)").text($("#txtQty").val());
+                        $(rows[i]).find("td:nth-child(5)").text($("#txtQty").val()*parseInt($("#lblUnitPrice").text()));
 
 
-        var total = parseInt($("#lblUnitPrice").text()) * $("#txtQty").val();
-        $("table tbody").append("<tr><td class='text-center' id='itemId'>" + $("#cmbItemID").find(":selected").text() + "</td><td class='text-center' id='description'>" + $("#lblItemName").text() + "</td><td class='text-center' id='unitPrice'>" + $("#lblUnitPrice").text() + "</td><td class='text-center' id='qty'>" + $("#txtQty").val() + "</td><td class='text-center' id='total'>" + total + "</td><td><img src='images/recyclebin.png' width='48px' alt='delete'></td>");
-        calculateTotal();
-        $("img").mouseover(function () {
-            $(this).attr("src", 'images/recyclebin-hover.png');
-        });
+                        var ajaxConfig = {
+                            method: "GET",
+                            url: "http://localhost:3000/api/v1/items/"+$(rows[i]).find("td:first-child").text(),
+                            async: false
 
-        $("img").mouseout(function () {
-            $(this).attr("src", 'images/recyclebin.png');
-        });
+                        };
 
-        $("img").off("click");
-        $("img").click(function (eventData) {
+                        $.ajax(ajaxConfig).done(function (response, statusText, jxhr) {
 
-            var deletedItemQty = parseInt($(this).parent().parent().find("#qty").text());
-            var deletedItemId = $(this).parent().parent().find("#itemId").text();
-            for (i = 0; i < ITEMS.length; i++) {
-                if (deletedItemId == ITEMS[i].code) {
+                            tempDB[i].qtyOnHand=response.qtyOnHand- $("#txtQty").val();
 
-                    ITEMS[i].qtyOnHand = ITEMS[i].qtyOnHand + deletedItemQty;
-                    $("#lblQtyOnHand").text(ITEMS[i].qtyOnHand);
+
+                        }).fail(function (jxhr, statusText, error) {
+                            console.log(error);
+                        });
+
+
+
+                    }
                 }
+
+
+                $("#cmbItemID").attr("disabled", false);
+                $("#btnAddCart").html("<i class='fas fa-cart-plus'></i> Add to Cart");
+                clear();
+                calculateTotal();
+
             }
 
+            else {
+                var total = parseInt($("#lblUnitPrice").text()) * $("#txtQty").val();
+                $("#tblOrderDetails tbody").append("<tr><td class='text-center'>" + $("#cmbItemID").val() + "</td><td class='text-center'>" + $("#lblItemName").text() + "</td><td class='text-center'>" + $("#lblUnitPrice").text() + "</td><td class='text-center' >" + $("#txtQty").val() + "</td><td class='text-center' >" + total + "</td><td><img src='image/recyclebin.png' width='48px' alt='delete' class='deleteImg'></td>");
+                $("#tblContainer").css("overflow-y", 'scroll');
+                calculateTotal();
 
-            $(this).parent().parent().fadeOut(500);
+                for (var i = 0; i < tempDB.length; i++) {
+                    var selectedItemCode = $("#cmbItemID").val();
 
-            setTimeout(function () {
+                    if (selectedItemCode == tempDB[i].code) {
+                        tempDB[i].qtyOnHand = tempDB[i].qtyOnHand - $("#txtQty").val();
 
-                $(this).parent().parent().remove();
-                $("#lblTotal").text(calculateTotal());
-
-            }, 600);
-
-
-            eventData.stopPropagation();
-            $("#cmbItemID").val("-Select Item ID-");
-            $("#lblItemDescription").text("");
-            $("#lblUnitPrice").text("");
-            $("#lblQtyOnHand").text("");
-            $("#txtQty").val("");
-
-        });
-
-        for (var i = 0; i < ITEMS.length; i++) {
-            var selectedItemId = $("#cmbItemID").find(":selected").text();
-
-            if (selectedItemId == ITEMS[i].code) {
-                ITEMS[i].qtyOnHand = parseInt($("#lblQtyOnHand").text()) - $("#txtQty").val();
-                $("#lblQtyOnHand").text(ITEMS[i].qtyOnHand);
-            }
-        }
-
-
-        $("#tblContainer").css("overflow-y", 'scroll');
-
-        $("#tblOrderDetails tbody tr").click(function () {
-            $("#cmbItemID").attr("disabled", '');
-            $("#btnAddCart").html("<i class='fas fa-cart-plus'></i> Update Cart");
-
-            $("#cmbItemID").val($(this).find("#itemId").text());
-            $("#lblItemDescription").text($(this).find("#description").text());
-            $("#lblUnitPrice").text($(this).find("#unitPrice").text());
-
-            $("#txtQty").val($(this).find("#qty").text());
-
-            for (var i = 0; i < ITEMS.length; i++) {
-                if (ITEMS[i].code == $(this).find("#itemId").text()) {
-                    $("#lblQtyOnHand").text(ITEMS[i].qtyOnHand);
+                    }
                 }
+
+                clear();
+
+                $(".deleteImg").mouseover(function () {
+                    $(this).attr("src", 'image/recyclebin-hover.png');
+                });
+
+                $(".deleteImg").mouseout(function () {
+                    $(this).attr("src", 'image/recyclebin.png');
+                });
+
+
+                $(".deleteImg").off("click");
+                $(".deleteImg").click(function (eventData) {
+
+                    var deletedItemQty = parseInt($(this).parents("tr").find("td:nth-child(4)").text());
+                    var deletedItemCode = $(this).parents("tr").find("td:first-child").text();
+
+
+                    for (i = 0; i < tempDB.length; i++) {
+                        if (deletedItemCode == tempDB[i].code) {
+                            tempDB[i].qtyOnHand = tempDB[i].qtyOnHand + deletedItemQty;
+                        }
+                    }
+
+
+                    // $(this).parent().parent().fadeOut(500);
+                    //
+                    // setTimeout(function () {
+
+                    $(this).parents("tr").remove();
+
+
+                    // }, 600);
+
+                    $("#cmbItemID").attr("disabled", false);
+                    $("#btnAddCart").html("<i class='fas fa-cart-plus'></i> Add to Cart");
+                    eventData.stopPropagation();
+                    console.log(calculateTotal());
+                    clear();
+
+                });
+
+
+                $("#tblOrderDetails tbody tr").click(function () {
+                    $("#cmbItemID").attr("disabled", true);
+                    $("#btnAddCart").html("<i class='fas fa-cart-plus'></i> Update Cart");
+
+                    $("#cmbItemID").val($(this).find("td:first-child").text());
+                    $("#lblItemName").text($(this).find("td:nth-child(2)").text());
+                    $("#lblUnitPrice").text($(this).find("td:nth-child(3)").text());
+
+                    $("#txtQty").val($(this).find("td:nth-child(4)").text());
+
+                    for (var i = 0; i < tempDB.length; i++) {
+                        if (tempDB[i].code == $(this).find("td:first-child").text()) {
+                            $("#lblQtyOnHand").text(tempDB[i].qtyOnHand);
+                        }
+                    }
+
+
+                });
+
+
             }
-
-
         });
 
+
+    $("button[type='reset']").click(function () {
+
+        $("#btnAddCart").html("<i class='fas fa-cart-plus'></i> Add to Cart");
+        $("#cmbItemID").attr("disabled", false);
+        clear();
 
     });
+
 
     function calculateTotal() {
         var rows = $("#tblOrderDetails tbody tr");
@@ -450,9 +502,19 @@
         for (var i = 0; i < rows.length; i++) {
             total += parseFloat($(rows[i]).find("td:nth-child(5)").text());
         }
-        $("#lblTotal").text(total);
+
+        $("#lblTotal").text(total + ".00");
         return total;
     }
+
+    function clear() {
+        $("#cmbItemID").val("-Select Item ID-");
+        $("#lblItemName").text("");
+        $("#lblUnitPrice").text("");
+        $("#lblQtyOnHand").text("");
+        $("#txtQty").val("");
+    }
+
 
 </script>
 
